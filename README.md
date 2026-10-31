@@ -5,8 +5,16 @@
 [![Express](https://img.shields.io/badge/Express-4.x-000000?logo=express&logoColor=white)](https://expressjs.com/)
 [![MongoDB](https://img.shields.io/badge/MongoDB-Atlas%20%2F%20Local-47A248?logo=mongodb&logoColor=white)](https://www.mongodb.com/)
 [![Vite](https://img.shields.io/badge/Vite-6.x-646CFF?logo=vite&logoColor=white)](https://vitejs.dev/)
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-Vercel-success?style=for-the-badge&logo=vercel)](https://job-portal-mauve-zeta.vercel.app/)
 
 A modern, responsive full-stack Job Portal platform featuring role-based access control (Candidates, Recruiters, and Administrators), resume uploading, real-time status tracking, recruiter analytics, and an integrated Server-Side Rendered (SSR) Admin management desk.
+
+---
+
+## 🚀 Live Demo & Links
+
+* 🌐 **Live Web Application**: [https://job-portal-mauve-zeta.vercel.app](https://job-portal-mauve-zeta.vercel.app)
+* 🛡️ **Admin Portal Desk**: [https://job-portal-l1ke.onrender.com/admin/login](https://job-portal-l1ke.onrender.com/admin/login)
 
 ---
 
