@@ -1,7 +1,17 @@
 import axios from 'axios';
 
-export const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
-export const SERVER_BASE_URL = import.meta.env.VITE_SERVER_URL || (import.meta.env.VITE_API_URL ? import.meta.env.VITE_API_URL.replace(/\/api\/?$/, '') : 'http://localhost:5000');
+let apiUrl = import.meta.env.VITE_API_URL || 'https://job-portal-l1ke.onrender.com/api';
+if (apiUrl.includes('job-portal-1ike')) {
+  apiUrl = apiUrl.replace('job-portal-1ike', 'job-portal-l1ke');
+}
+
+let serverUrl = import.meta.env.VITE_SERVER_URL || 'https://job-portal-l1ke.onrender.com';
+if (serverUrl.includes('job-portal-1ike')) {
+  serverUrl = serverUrl.replace('job-portal-1ike', 'job-portal-l1ke');
+}
+
+export const API_BASE_URL = apiUrl;
+export const SERVER_BASE_URL = serverUrl;
 
 const api = axios.create({
   baseURL: API_BASE_URL,
