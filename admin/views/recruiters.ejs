@@ -1,0 +1,62 @@
+<%- include('partials/header', { token: token, activePage: 'recruiters' }) %>
+
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+  <h1 class="h2 fw-bold text-dark">Recruiter Verification Manager</h1>
+  <div class="text-muted">Manage recruiter posting permissions</div>
+</div>
+
+<div class="table-container">
+  <div class="table-responsive">
+    <table class="table table-hover align-middle">
+      <thead>
+        <tr>
+          <th>Recruiter Name</th>
+          <th>Email Address</th>
+          <th>Phone Number</th>
+          <th>Verification Status</th>
+          <th class="text-center">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if (recruiters.length === 0) { %>
+          <tr>
+            <td colspan="5" class="text-center text-muted py-4">No recruiters registered.</td>
+          </tr>
+        <% } %>
+        <% recruiters.forEach(recruiter => { %>
+          <tr>
+            <td>
+              <div class="fw-semibold"><%= recruiter.name %></div>
+            </td>
+            <td><%= recruiter.email %></td>
+            <td><%= recruiter.phone || 'N/A' %></td>
+            <td>
+              <% if (recruiter.isVerified) { %>
+                <span class="badge badge-verified"><i class="bi bi-check-circle-fill me-1"></i>Verified</span>
+              <% } else { %>
+                <span class="badge badge-unverified"><i class="bi bi-x-circle-fill me-1"></i>Unverified</span>
+              <% } %>
+            </td>
+            <td class="text-center">
+              <% if (recruiter.isVerified) { %>
+                <form action="/admin/recruiters/unverify/<%= recruiter._id %>" method="POST" style="display:inline;">
+                  <button type="submit" class="btn btn-sm btn-outline-danger px-3 fw-semibold">
+                    <i class="bi bi-x-circle me-1"></i>Unverify
+                  </button>
+                </form>
+              <% } else { %>
+                <form action="/admin/recruiters/verify/<%= recruiter._id %>" method="POST" style="display:inline;">
+                  <button type="submit" class="btn btn-sm btn-success px-3 fw-semibold">
+                    <i class="bi bi-check-circle me-1"></i>Verify
+                  </button>
+                </form>
+              <% } %>
+            </td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<%- include('partials/footer', { token: token }) %>

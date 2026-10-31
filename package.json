@@ -1,0 +1,14 @@
+{
+  "name": "job-portal",
+  "version": "1.0.0",
+  "description": "Full-Stack Career Platform with React 19, Express, MongoDB, and SSR Admin Desk",
+  "author": "Yogyabhilash",
+  "license": "MIT",
+  "scripts": {
+    "server": "npm --prefix server run dev",
+    "client": "npm --prefix client run dev",
+    "build:client": "npm --prefix client run build",
+    "install:all": "npm install --prefix client && npm install --prefix server",
+    "seed": "npm --prefix server run seed"
+  }
+}

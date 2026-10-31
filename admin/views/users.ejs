@@ -1,0 +1,66 @@
+<%- include('partials/header', { token: token, activePage: 'users' }) %>
+
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+  <h1 class="h2 fw-bold text-dark">User Directory</h1>
+  <div class="text-muted">Total Users Registered: <%= users.length %></div>
+</div>
+
+<div class="table-container">
+  <div class="table-responsive">
+    <table class="table table-hover align-middle">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Role</th>
+          <th>Phone</th>
+          <th>Bio</th>
+          <th>Verified (Recruiter)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if (users.length === 0) { %>
+          <tr>
+            <td colspan="6" class="text-center text-muted py-4">No users registered in the system.</td>
+          </tr>
+        <% } %>
+        <% users.forEach(user => { %>
+          <tr>
+            <td>
+              <div class="fw-semibold"><%= user.name %></div>
+            </td>
+            <td><%= user.email %></td>
+            <td>
+              <% if (user.role === 'admin') { %>
+                <span class="badge bg-danger text-uppercase px-2 py-1">Admin</span>
+              <% } else if (user.role === 'recruiter') { %>
+                <span class="badge bg-success text-uppercase px-2 py-1">Recruiter</span>
+              <% } else { %>
+                <span class="badge bg-primary text-uppercase px-2 py-1">Student</span>
+              <% } %>
+            </td>
+            <td><%= user.phone || 'N/A' %></td>
+            <td>
+              <div class="text-truncate" style="max-width: 250px;" title="<%= user.bio %>">
+                <%= user.bio || 'No bio provided' %>
+              </div>
+            </td>
+            <td>
+              <% if (user.role === 'recruiter') { %>
+                <% if (user.isVerified) { %>
+                  <span class="badge badge-verified"><i class="bi bi-check-circle-fill me-1"></i>Verified</span>
+                <% } else { %>
+                  <span class="badge badge-unverified"><i class="bi bi-x-circle-fill me-1"></i>Unverified</span>
+                <% } %>
+              <% } else { %>
+                <span class="text-muted">—</span>
+              <% } %>
+            </td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<%- include('partials/footer', { token: token }) %>
